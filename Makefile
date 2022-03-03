@@ -4,6 +4,7 @@ all: test
 .PHONY: test
 test:
 	go test
+	cd provider && go test
 	
 .PHONY: test_coverage
 test_coverage:
