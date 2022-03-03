@@ -7,7 +7,7 @@ import (
 )
 
 func TestInitObserver(t *testing.T) {
-	assert.NotNil(t, globalProvider)
+	assert.NotNil(t, observerProvider)
 
 	pi, found := Instance().Find(TypeLogger)
 	assert.True(t, found)

@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/txsvc/observer/pkg/provider"
+	"github.com/txsvc/stdlib/v2/provider"
 )
 
 const (
@@ -45,11 +45,11 @@ type (
 )
 
 var (
-	globalProvider *provider.Provider // FIXME chnage name and add some explanation
+	observerProvider *provider.Provider
 )
 
 func Instance() *provider.Provider {
-	return globalProvider
+	return observerProvider
 }
 
 func NewConfig(opts ...provider.ProviderConfig) (*provider.Provider, error) {
@@ -61,7 +61,7 @@ func NewConfig(opts ...provider.ProviderConfig) (*provider.Provider, error) {
 	if err != nil {
 		return nil, err
 	}
-	globalProvider = o
+	observerProvider = o
 
 	return o, nil
 }
@@ -71,7 +71,7 @@ func UpdateConfig(opts ...provider.ProviderConfig) (*provider.Provider, error) {
 		return nil, fmt.Errorf(provider.MsgUnsupportedProviderType, pc.Type)
 	}
 
-	return globalProvider, Instance().RegisterProviders(true, opts...)
+	return observerProvider, Instance().RegisterProviders(true, opts...)
 }
 
 func validateProviders(opts ...provider.ProviderConfig) *provider.ProviderConfig {

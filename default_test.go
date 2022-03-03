@@ -11,12 +11,12 @@ import (
 )
 
 func TestLog(t *testing.T) {
-	assert.NotNil(t, globalProvider)
+	assert.NotNil(t, observerProvider)
 	Log("info message")
 }
 
 func TestWithLogLevel(t *testing.T) {
-	assert.NotNil(t, globalProvider)
+	assert.NotNil(t, observerProvider)
 
 	LogWithLevel(LevelDebug, "LevelDebug message")
 	LogWithLevel(LevelWarn, "LevelWarn message")
@@ -27,7 +27,7 @@ func TestWithLogLevel(t *testing.T) {
 }
 
 func TestOffAndOn(t *testing.T) {
-	assert.NotNil(t, globalProvider)
+	assert.NotNil(t, observerProvider)
 
 	DisableLogging()
 	_, found := Instance().Find(TypeLogger)
@@ -40,20 +40,20 @@ func TestOffAndOn(t *testing.T) {
 }
 
 func TestWithKV(t *testing.T) {
-	assert.NotNil(t, globalProvider)
+	assert.NotNil(t, observerProvider)
 
 	Log("message with even KVs", "aa", "AA", "bb", "BB", "cc", "CC")
 	Log("message with odd KVs", "aa", "AA", "bb")
 }
 
 func TestMetering(t *testing.T) {
-	assert.NotNil(t, globalProvider)
+	assert.NotNil(t, observerProvider)
 
 	Meter(context.Background(), "sample", "aa", "bb")
 }
 
 func TestReportError(t *testing.T) {
-	assert.NotNil(t, globalProvider)
+	assert.NotNil(t, observerProvider)
 
 	// simple exception
 	e := fmt.Errorf("an error happened")
