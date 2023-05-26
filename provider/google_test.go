@@ -9,13 +9,13 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/txsvc/observer"
-	"github.com/txsvc/stdlib/v2/env"
-	"github.com/txsvc/stdlib/v2/provider"
+	"github.com/txsvc/stdlib/v2"
+	"github.com/txsvc/stdlib/v2/deprecated/provider"
 )
 
 func TestGoogleSetup(t *testing.T) {
-	require.True(t, env.Exists("PROJECT_ID"))
-	require.True(t, env.Exists("GOOGLE_APPLICATION_CREDENTIALS"))
+	require.True(t, stdlib.Exists("PROJECT_ID"))
+	require.True(t, stdlib.Exists("GOOGLE_APPLICATION_CREDENTIALS"))
 }
 
 func TestLoggingImpl(t *testing.T) {

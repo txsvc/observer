@@ -8,8 +8,8 @@ import (
 	stackdriver_logging "cloud.google.com/go/logging"
 
 	"github.com/txsvc/observer"
-	"github.com/txsvc/stdlib/v2/env"
-	"github.com/txsvc/stdlib/v2/provider"
+	"github.com/txsvc/stdlib/v2"
+	"github.com/txsvc/stdlib/v2/deprecated/provider"
 )
 
 //
@@ -52,8 +52,8 @@ var (
 
 func NewGoogleStackdriverProvider() interface{} {
 	if stackDriverProvider == nil {
-		projectID := env.GetString("PROJECT_ID", "")
-		serviceName := env.GetString("SERVICE_NAME", "default")
+		projectID := stdlib.GetString("PROJECT_ID", "")
+		serviceName := stdlib.GetString("SERVICE_NAME", "default")
 
 		// initialize logging
 		lc, err := stackdriver_logging.NewClient(context.Background(), projectID)

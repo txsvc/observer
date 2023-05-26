@@ -7,7 +7,7 @@ import (
 	"github.com/rs/zerolog/log"
 	"github.com/rs/zerolog/pkgerrors"
 
-	"github.com/txsvc/stdlib/v2/provider"
+	"github.com/txsvc/stdlib/v2/deprecated/provider"
 )
 
 type (
